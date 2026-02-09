@@ -1,0 +1,244 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AMIRA | Summarizing Demo (Grade 4)</title>
+  <style>
+    :root{
+      --amira-green:#1b7f5a;
+      --amira-purple:#5a2ea6;
+      --bg:#ffffff;
+      --ink:#1a1a1a;
+      --muted:#4b5563;
+      --panel:#f7f7fb;
+      --border:#d7d9e3;
+      --focus:#0b5fff;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+      line-height:1.5;
+      color:var(--ink);
+      background:var(--bg);
+    }
+    a{color:inherit}
+    .skip-link{
+      position:absolute; left:-999px; top:auto;
+      width:1px; height:1px; overflow:hidden;
+    }
+    .skip-link:focus{
+      left:12px; top:12px; width:auto; height:auto;
+      padding:10px 12px;
+      background:#fff;
+      border:2px solid var(--focus);
+      border-radius:12px;
+      z-index:9999;
+      outline:none;
+    }
+    header{
+      background: linear-gradient(90deg, rgba(27,127,90,.12), rgba(90,46,166,.12));
+      border-bottom:1px solid var(--border);
+    }
+    .wrap{
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px 16px;
+    }
+    .brand{
+      display:flex;
+      align-items:flex-end;
+      gap:14px;
+    }
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      user-select:none;
+      flex: 0 0 auto;
+    }
+    .logo-mark{
+      width:38px; height:38px;
+      border-radius:12px;
+      background: conic-gradient(from 210deg, var(--amira-green), var(--amira-purple), var(--amira-green));
+      box-shadow: 0 6px 16px rgba(0,0,0,.10);
+    }
+    .logo-text{
+      font-weight: 900;
+      letter-spacing:.12em;
+      font-size: 22px;
+      white-space:nowrap;
+    }
+    .logo-text .g{ color:var(--amira-green); }
+    .logo-text .p{ color:var(--amira-purple); }
+    h1{
+      margin:0;
+      font-size: 20px;
+      font-weight: 900;
+    }
+    .subtitle{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size: 14px;
+    }
+    main{ padding: 16px 0 40px; }
+    .card{
+      border:1px solid var(--border);
+      background:#fff;
+      border-radius: 18px;
+      padding: 16px;
+      box-shadow: 0 8px 24px rgba(0,0,0,.05);
+    }
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-top: 14px;
+    }
+    @media (min-width: 860px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+    h2{
+      margin: 0 0 8px;
+      font-size: 16px;
+      font-weight: 900;
+      color: var(--amira-purple);
+    }
+    p{ margin: 8px 0; }
+    strong{ font-weight: 900; color: var(--amira-purple); }
+
+    .btnrow{
+      display:flex;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-top: 12px;
+    }
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:10px;
+      padding: 12px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      text-decoration:none;
+      font-weight: 900;
+      cursor:pointer;
+      background:#fff;
+      min-height: 44px; /* touch target */
+    }
+    .btn:hover{ box-shadow: 0 6px 16px rgba(0,0,0,.08); }
+    .btn:focus{
+      outline: 3px solid var(--focus);
+      outline-offset: 2px;
+    }
+    .btn-green{
+      border-color: rgba(27,127,90,.35);
+      background: rgba(27,127,90,.10);
+      color: var(--amira-green);
+    }
+    .btn-purple{
+      border-color: rgba(90,46,166,.35);
+      background: rgba(90,46,166,.10);
+      color: var(--amira-purple);
+    }
+    .tag{
+      display:inline-block;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(27,127,90,.25);
+      background: rgba(27,127,90,.10);
+      color: var(--amira-green);
+      font-weight: 900;
+      font-size: 12px;
+      vertical-align: middle;
+      margin-left: 6px;
+    }
+    .tag.purple{
+      border-color: rgba(90,46,166,.25);
+      background: rgba(90,46,166,.10);
+      color: var(--amira-purple);
+    }
+    .note{
+      margin-top: 12px;
+      color: var(--muted);
+      font-size: 13px;
+    }
+    code{
+      background: var(--panel);
+      padding: 2px 6px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+    }
+    footer{
+      margin-top: 16px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+<a class="skip-link" href="#content">Skip to main content</a>
+
+<header>
+  <div class="wrap">
+    <div class="brand" role="banner" aria-label="AMIRA demo header">
+      <div class="logo" aria-label="AMIRA branding">
+        <div class="logo-mark" aria-hidden="true"></div>
+        <div class="logo-text" aria-label="AMIRA">
+          <span class="g">AM</span><span class="p">IRA</span>
+        </div>
+      </div>
+      <div style="min-width:0">
+        <h1><span style="color:var(--amira-green)">Summarizing</span> Demo <span class="tag">Grade 4</span></h1>
+        <p class="subtitle">Open the teacher lesson or the student practice. Both files run in any modern browser.</p>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap" id="content">
+  <div class="card">
+    <h2>Choose a view</h2>
+    <p>This demo includes two pages:</p>
+    <ul>
+      <li><strong>Teacher Lesson</strong> — a mini-lesson teachers can deliver.</li>
+      <li><strong>Student Practice</strong> — interactive, auto-scored practice with multiple short passages.</li>
+    </ul>
+    <div class="btnrow" aria-label="Open lesson or practice">
+      <a class="btn btn-green" href="AMIRA_G4_Teacher_Summarizing.html" target="_blank" rel="noopener">
+        Open Teacher Lesson <span class="tag">Teacher</span>
+      </a>
+      <a class="btn btn-purple" href="AMIRA_G4_Student_Summarizing_Practice.html" target="_blank" rel="noopener">
+        Open Student Practice <span class="tag purple">Student</span>
+      </a>
+    </div>
+    <p class="note"><strong>Sharing tip:</strong> Keep this <code>index</code> file in the <em>same folder</em> as the two lesson files so the buttons work.</p>
+  </div>
+
+  <div class="grid" aria-label="Share options">
+    <div class="card">
+      <h2>Share as a folder</h2>
+      <p>Put these three files together:</p>
+      <ul>
+        <li><code>AMIRA_G4_Summarizing_Demo_Index.html</code></li>
+        <li><code>AMIRA_G4_Teacher_Summarizing.html</code></li>
+        <li><code>AMIRA_G4_Student_Summarizing_Practice.html</code></li>
+      </ul>
+      <p>Zip the folder and send it, or upload the folder to a shared drive.</p>
+    </div>
+
+    <div class="card">
+      <h2>Host for a single link</h2>
+      <p>If you host these as static files (SharePoint/OneDrive, Google Drive hosting, S3, etc.), you can share one link to this index page.</p>
+      <p class="note">If your hosting rewrites paths, keep filenames unchanged or update the <code>href</code> targets in this file.</p>
+    </div>
+  </div>
+
+  <footer>
+    WCAG-friendly: semantic headings, keyboard-focus styles, and 44px button targets. No external libraries.
+  </footer>
+</main>
+</body>
+</html>
